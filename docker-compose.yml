@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  onlinestore:
+    container_name: onlinestore
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: onlinestore:latest
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb-run
+      - SPRING_DATASOURCE_USERNAME=demo
+      - SPRING_DATASOURCE_PASSWORD=password
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
