@@ -1,20 +1,49 @@
 version: '3.4'
 
 services:
+  # PostgreSQL servisi
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: my_online_store_db_user
+      POSTGRES_PASSWORD: PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA
+      POSTGRES_DB: my_online_store_db
+    ports:
+      - "5432:5432"  # Veritabanını dışarıya açan port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  # Proje Ayarları
   onlinestore:
     container_name: onlinestore
     build:
       context: ./
       dockerfile: Dockerfile
     image: onlinestore:latest
-    ports:
-      - '8080:8080'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb-run
-      - SPRING_DATASOURCE_USERNAME=demo
-      - SPRING_DATASOURCE_PASSWORD=password
+      - DB_HOST=dpg-cuv067lds78s7387tlhg-a.oregon-postgres.render.com
+      - DB_PORT=5432
+      - DB_NAME=my_online_store_db
+      - DB_USERNAME=my_online_store_db_user
+      - DB_PASSWORD=PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA
+    ports:
+      - "8080:8080"  # Uygulamanın dışa açılacak portu
+    depends_on:
+      - postgres
+    networks:
+      - backend
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
       timeout: 10s
       retries: 5
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres_data:

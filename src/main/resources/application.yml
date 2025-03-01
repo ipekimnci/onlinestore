@@ -1,30 +1,27 @@
 server:
   port: 8080
 
-# H2 Database Config
+# PostgreSql Database Config
 spring:
   application:
-    name: demo-microservice
+    name: onlinestore
   datasource:
-    url: jdbc:h2:mem:testdb-run
-    driverClassName: org.h2.Driver
-    username: demo
-    password: password
-
-  # Konsol Ayarlar (Veritabanı yönetimi için)
-  h2:
-    console:
-      settings:
-        web-allow-others: true
-      enabled: true
-      path: /h2-console-run
-
-  # JPA Ayarlar
+    url: jdbc:postgresql://dpg-cuv067lds78s7387tlhg-a.oregon-postgres.render.com:5432/my_online_store_db
+    username: my_online_store_db_user
+    password: PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 600000
+      connection-timeout: 30000
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
+
 
 # health check kontrolü
 management:
