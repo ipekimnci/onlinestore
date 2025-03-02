@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: onlinestore-service
+spec:
+  selector:
+    app: onlinestore
+  ports:
+    - protocol: TCP
+      port: 8080  # Dış dünyaya açılacak port
+      targetPort: 8080  # Konteynerin içindeki port
+  type: LoadBalancer  # Eğer bulut ortamında çalışıyorsanız, dış IP almak için LoadBalancer tipi
