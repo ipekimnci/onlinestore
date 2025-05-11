@@ -6,9 +6,9 @@ services:
     image: postgres:latest
     container_name: postgres-db
     environment:
-      POSTGRES_USER: my_online_store_db_user
-      POSTGRES_PASSWORD: PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA
-      POSTGRES_DB: my_online_store_db
+      POSTGRES_USER: my_online_store_db_ia8b_user
+      POSTGRES_PASSWORD: RMBOldznZwrDHIiIWlAreBVzs03LnCgP
+      POSTGRES_DB: my_online_store_db_ia8b
     ports:
       - "5432:5432"  # Veritabanını dışarıya açan port
     volumes:
@@ -24,11 +24,11 @@ services:
       dockerfile: Dockerfile
     image: onlinestore:latest
     environment:
-      - DB_HOST=dpg-cuv067lds78s7387tlhg-a.oregon-postgres.render.com
+      - DB_HOST=dpg-d0gdrok9c44c73fg4tn0-a.oregon-postgres.render.com
       - DB_PORT=5432
-      - DB_NAME=my_online_store_db
-      - DB_USERNAME=my_online_store_db_user
-      - DB_PASSWORD=PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA
+      - DB_NAME=my_online_store_db_ia8b
+      - DB_USERNAME=my_online_store_db_ia8b_user
+      - DB_PASSWORD=RMBOldznZwrDHIiIWlAreBVzs03LnCgP
     ports:
       - "8080:8080"  # Uygulamanın dışa açılacak portu
     depends_on:

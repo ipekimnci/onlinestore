@@ -21,15 +21,15 @@ spec:
             - containerPort: 8080  # Uygulamanızın çalıştığı port
           env:
             - name: DB_HOST
-              value: "dpg-cuv067lds78s7387tlhg-a.oregon-postgres.render.com"
+              value: "dpg-d0gdrok9c44c73fg4tn0-a.oregon-postgres.render.com"
             - name: DB_PORT
               value: "5432"
             - name: DB_NAME
-              value: "my_online_store_db"
+              value: "my_online_store_db_ia8b"
             - name: DB_USERNAME
-              value: "my_online_store_db_user"
+              value: "my_online_store_db_ia8b_user"
             - name: DB_PASSWORD
-              value: "PQmlLRQWkLRhqElcFBp0uCwSzBIAEZUA"
+              value: "RMBOldznZwrDHIiIWlAreBVzs03LnCgP"
           readinessProbe:
             httpGet:
               path: /health
