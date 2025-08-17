@@ -15,9 +15,9 @@ spring:
   datasource:
     # Lokal (Compose): postgres:5432 / my_online_store_db_2qlb  (sslmode=disable)
     # Render: ${DB_HOST}:${DB_PORT}/${DB_NAME}                   (sslmode=require)
-    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:my_online_store_db_2qlb}?sslmode=${DB_SSLMODE:disable}
-    username: ${DB_USERNAME:my_online_store_db_2qlb_user}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=${DB_SSLMODE}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: ${DB_MIN_IDLE:5}
@@ -31,3 +31,4 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
