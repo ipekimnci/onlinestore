@@ -15,7 +15,4 @@ public class Product {
     private String name;
     @Column
     private BigDecimal price;
-
-    @Version
-    private Long version; // Versiyon kontrolü
 }

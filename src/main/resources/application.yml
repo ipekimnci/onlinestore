@@ -6,9 +6,9 @@ spring:
   application:
     name: onlinestore
   datasource:
-    url: jdbc:postgresql://dpg-d0gdrok9c44c73fg4tn0-a.oregon-postgres.render.com:5432/my_online_store_db_ia8b?sslmode=require
-    username: my_online_store_db_ia8b_user
-    password: RMBOldznZwrDHIiIWlAreBVzs03LnCgP
+    url: jdbc:postgresql://dpg-d2gse675r7bs73fe2jp0-a.oregon-postgres.render.com:5432/my_online_store_db_2qlb?sslmode=require
+    username: my_online_store_db_2qlb_user
+    password: kB695CyygFT2wqkRZulCRLa9lR8JainN
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: 5
